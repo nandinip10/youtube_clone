@@ -2,18 +2,15 @@ import React, { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
 import axios from "axios";
 import Sidebar from "./Sidebar";
-// import { fetchFromAPI } from "../utils/fetchFromAPI";
 import Videos from "./Videos";
 import Pagination from "@mui/material/Pagination";
 import ReactPlayer from "react-player";
 
 const Feed = () => {
   const [videos, setVideos] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
   const [videoDetail, setVideoDetail] = useState(null);
-  // useEffect(() => {
-  //   fetchFromAPI("2").then((data) => setVideos(data));
-  // }, []);
+  
   const paginate = (e, value) => {
     setCurrentPage(value);
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -73,7 +70,7 @@ const Feed = () => {
             sx={{ backgroundColor: "#625f5f" }}
             color="standard"
             shape="rounded"
-            defaultPage={1}
+            defaultPage={0}
             count={10}
             page={currentPage}
             onChange={paginate}
